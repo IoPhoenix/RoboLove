@@ -8,7 +8,7 @@ class Card extends Component {
 
     render() {
         return (
-            <div onClick={this.changeCard} className='tc bg-light-green b--green dib br3 pa3 ma2 bw2 grow shadow-5'>
+            <div onClick={this.changeCard} className='tc bg-light-green b--green dib br3 pa3 ma2 bw2 grow shadow-5 w-25'>
                 <img src={`https://robohash.org/${this.props.id}?200x200`} width='200' height='200' alt={`robot named ${this.props.name}`} />
                 <div>
                     <h2>{this.props.name}</h2>
