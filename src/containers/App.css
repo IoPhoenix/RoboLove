@@ -5,6 +5,11 @@
     src: local('MrRobot'), url('MRROBOT.woff') format('woff');
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     margin-bottom: 1rem;
     color: #73f79c;

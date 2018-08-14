@@ -3,6 +3,8 @@ import './App.css';
 import Sticky from '../components/Sticky';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
+import ErrorBoundary from '../components/ErrorBoundary';
+
 
 class App extends Component {
     constructor() {
@@ -38,8 +40,10 @@ class App extends Component {
                 <h1 className='f1'>RoboLove</h1>
                 <Sticky>
                     <SearchBox searchChange={this.onSearchChange} />
-                </Sticky>                    
-                <CardList className='flex justify-center' robots={filteredRobots} />                
+                </Sticky>   
+                <ErrorBoundary>
+                    <CardList className='flex justify-center' robots={filteredRobots} />                
+                </ErrorBoundary>                 
             </div>
         )
     }
