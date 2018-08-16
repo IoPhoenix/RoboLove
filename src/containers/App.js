@@ -1,17 +1,31 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './App.css';
 import Sticky from '../components/Sticky';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import ErrorBoundary from '../components/ErrorBoundary';
 
+import {setSearchField} from '../actions';
+
+const mapStateToProps = (state) => {
+    return {
+        searchField: state.searchField
+    }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+    }
+}
 
 class App extends Component {
     constructor() {
         super()
         this.state = {
-            robots: [],
-            searchfield: ''
+            robots: []
         }
     }
 
@@ -21,16 +35,18 @@ class App extends Component {
         .then(users => this.setState({robots: users}) );
     }
 
-    onSearchChange = (e) => {
-        this.setState({ searchfield: e.target.value });
-    }
+    // redux replaces this with action and reducer:
+    // onSearchChange = (e) => {
+    //     this.setState({ searchfield: e.target.value });
+    // }
 
    render() {
-    const { robots, searchfield } = this.state;
+    const { robots } = this.state;
+    const { searchField, onSearchChange } = this.props;
     const filteredRobots = robots.filter(robot => {
         return robot.name
                 .toLowerCase()
-                .includes(searchfield.toLowerCase());
+                .includes(searchField.toLowerCase());
     });
 
     return !robots.length
@@ -39,7 +55,7 @@ class App extends Component {
             <div className='tc'>
                 <h1 className='f1'>RoboLove</h1>
                 <Sticky>
-                    <SearchBox searchChange={this.onSearchChange} />
+                    <SearchBox searchChange={onSearchChange} />
                 </Sticky>   
                 <ErrorBoundary>
                     <CardList className='flex justify-center' robots={filteredRobots} />                
@@ -49,4 +65,5 @@ class App extends Component {
     }
 }
 
-export default App;
+// subscribe app to any state changes in redux store:
+export default connect(mapStateToProps, mapDispatchToProps)(App);
