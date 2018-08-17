@@ -14,7 +14,7 @@ const CardList = ({robots}) => {
     });
 
     return (
-        <div>
+        <div className='flex flex-column flex-wrap justify-center items-center flex-row-ns'>
             {cardsArray}
         </div>
     );

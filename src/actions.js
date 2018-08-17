@@ -12,6 +12,7 @@ export const setSearchField = (text) => {
     }
 }
 
+// since function is being returned, not an object, use redux-thunk middleware:
 export const requestRobots = () => (dispatch) => {
     dispatch({ type: REQUEST_ROBOTS_PENDING });
     fetch('https://jsonplaceholder.typicode.com/users')
