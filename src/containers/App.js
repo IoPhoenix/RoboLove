@@ -8,6 +8,7 @@ import ErrorBoundary from '../components/ErrorBoundary';
 
 import {setSearchField, requestRobots} from '../actions';
 
+// declare what pieces of state you want to have access to:
 const mapStateToProps = (state) => {
     return {
         searchField: state.searchRobots.searchField,
@@ -17,7 +18,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-
+// declare which action creators you need to be able to dispatch:
 const mapDispatchToProps = (dispatch) => {
     return {
         onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
@@ -55,5 +56,5 @@ class App extends Component {
     }
 }
 
-// subscribe app to any state changes in redux store:
+// use connect to connect React to Redux:
 export default connect(mapStateToProps, mapDispatchToProps)(App);
