@@ -1,4 +1,4 @@
-import { 
+import {
     CHANGE_SEARCH_FIELD,
     REQUEST_ROBOTS_PENDING,
     REQUEST_ROBOTS_SUCCESS,
@@ -11,7 +11,7 @@ describe('search robots', () => {
     const mockInitialStateSearch = {
         searchField: ''
     }
-    
+
     it('should return initial state', () => {
         expect(reducers.searchRobots(undefined, {})).toEqual({ searchField: '' });
     });
@@ -23,7 +23,7 @@ describe('search robots', () => {
         })).toEqual({
             searchField: 'abc'
         })
-    });  
+    });
 })
 
 
